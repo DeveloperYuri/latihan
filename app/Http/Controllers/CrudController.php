@@ -29,14 +29,26 @@ class CrudController extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd($request->all());
+
+        $validate = $request->validate([
+            'name' => 'required|min:3',
+            'description' => 'required|min:5'
+        ]);
+
         $save = new ProductModel;
 
         $save->name = trim($request->name);
+        $save->date = date('Y-m-d H:i:s');
+        // $save->skill = trim($request->skill);
+        $save->skill = $request->has('skill') ? implode(',', $request->skill) : null;
+
         $save->description = trim($request->description);
 
         $save->save();
 
-        return redirect('crud');
+        return redirect()->route('crudindex')->with('success', 'Create Data Successfully');
     }
 
     /**
@@ -62,7 +74,14 @@ class CrudController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = ProductModel::findOrFail($id);
+
+        $product->update([
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+
+        return redirect()->route('crudindex')->with('success', 'Edit Data Successfully');
     }
 
     /**
@@ -72,6 +91,6 @@ class CrudController extends Controller
     {
         $id->delete();
 
-        return redirect()->route('crudindex');
+        return redirect()->route('crudindex')->with('error', 'Delete Data Successfully');
     }
 }

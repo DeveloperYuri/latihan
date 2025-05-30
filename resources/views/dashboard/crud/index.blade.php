@@ -16,6 +16,8 @@
 
         <a href="{{ route('createcrud') }}" class="btn btn-primary mb-3">New</a>
 
+        @include('_message')
+
         <section class="section">
             <div class="row">
                 <div class="col-lg-12">
@@ -31,6 +33,8 @@
                                         {{-- <th>No</th> --}}
                                         <th class="text-center">Name</th>
                                         <th class="text-center">Description</th>
+                                        <th class="text-center">Skill</th>
+                                        <th class="text-center">Date</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
@@ -41,9 +45,23 @@
                                             <td class="text-center">{{ $p->name }}</td>
                                             <td class="text-center">{{ $p->description }}</td>
                                             <td class="text-center">
+                                                @foreach (explode(',', $p->skill) as $skill)
+                                                    <span class="badge bg-primary">{{ ucfirst($skill) }}</span>
+                                                @endforeach
+                                            </td>
+                                            {{-- <td class="text-center">
+                                                @php
+                                                    $skills = explode(',', $p->skill);
+                                                    $skills = array_map('ucfirst', $skills); // Ubah huruf depan jadi kapital
+                                                    echo implode(', ', $skills);
+                                                @endphp
+                                            </td> --}}
+                                            <td class="text-center">{{ date('d M Y', strtotime($p->date)) }}</td>
+                                            <td class="text-center">
                                                 <form onsubmit="return confirm('apakah anda yakin ingin delete data?')"
                                                     action="{{ route('deletecrud', $p->id) }}" method="POST">
-                                                    <a href="{{ route('editcrudbasic', ['id' => $p->id]) }}" class="btn btn-sm btn-warning">Edit</a>
+                                                    <a href="{{ route('editcrudbasic', ['id' => $p->id]) }}"
+                                                        class="btn btn-sm btn-warning">Edit</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-sm btn-danger">Hapus</button>

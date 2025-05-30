@@ -22,20 +22,46 @@
                             <h5 class="card-title">Create Form</h5>
 
                             <!-- Horizontal Form -->
-                            <form  action="{{ route('postcrud')}}" method="POST">
+                            <form action="{{ route('postcrud') }}" method="POST">
                                 {{ csrf_field() }}
                                 <div class="row mb-3">
-                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+                                    <label class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
                                         <input type="text" name="name" class="form-control" id="inputText">
+                                        @error('name')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Description</label>
+                                    <label class="col-sm-2 col-form-label">Description</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="description" class="form-control" id="inputEmail">
+                                        <input type="text" name="description" class="form-control">
+                                        @error('description')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Date</label>
+                                    <div class="col-sm-10">
+                                        <input type="date" name="description" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Skills</label>
+                                    <div class="col-sm-10">
+                                        <input type="checkbox" name="skill[]" value="php"><label
+                                            for=""> PHP</label>
+                                        <input type="checkbox" name="skill[]" value="java"><label
+                                            for=""> Java</label>
+                                        <input type="checkbox" name="skill[]" value="python"><label
+                                            for=""> Python</label>
+                                    </div>
+                                </div>
+
                                 <div class="text-left">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>

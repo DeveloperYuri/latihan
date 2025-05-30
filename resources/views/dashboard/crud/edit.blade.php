@@ -22,7 +22,8 @@
                             <h5 class="card-title">Edit Form</h5>
 
                             <!-- Horizontal Form -->
-                            <form  action="{{ route('postcrud')}}" method="POST">
+                            <form action="{{ route('crudupdate', $data->id)}}" method="POST">
+                                @method("PUT")
                                 {{ csrf_field() }}
                                 <div class="row mb-3">
                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>

@@ -18,3 +18,4 @@ Route::get('/createcrud', [CrudController::class, 'create'])->name('createcrud')
 Route::post('/postcrud', [CrudController::class, 'store'])->name('postcrud');
 Route::delete('/deletecrud/{id}', [CrudController::class, 'destroy'])->name('deletecrud');
 Route::get('/editcrudtest/{id}', [CrudController::class, 'edit'])->name('editcrudbasic');
+Route::put('/crud/update/{id}', [CrudController::class, 'update'])->name('crudupdate');
