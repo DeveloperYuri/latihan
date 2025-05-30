@@ -22,21 +22,64 @@
                             <h5 class="card-title">Edit Form</h5>
 
                             <!-- Horizontal Form -->
-                            <form action="{{ route('crudupdate', $data->id)}}" method="POST">
-                                @method("PUT")
+                            <form action="{{ route('crudupdate', $data->id) }}" method="POST">
+                                @method('PUT')
                                 {{ csrf_field() }}
                                 <div class="row mb-3">
                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="name" class="form-control" id="inputText" value="{{ $data->name}}">
+                                        <input type="text" name="name" class="form-control" id="inputText"
+                                            value="{{ $data->name }}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Description</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="description" class="form-control" id="inputEmail" value="{{ $data->description}}">
+                                        <input type="text" name="description" class="form-control" id="inputEmail"
+                                            value="{{ $data->description }}">
                                     </div>
                                 </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Date</label>
+                                    <div class="col-sm-10">
+                                        <input type="date" name="date" class="form-control"
+                                            value="{{ $data->date }}">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Skills</label>
+                                    <div class="col-sm-10">
+                                        <input type="checkbox" name="skill[]" value="php"
+                                            {{ in_array('php', old('skill', $data->skill_array)) ? 'checked' : '' }}>
+
+                                        <label>PHP</label>
+
+                                        <input type="checkbox" name="skill[]" value="java"
+                                            {{ in_array('java', old('skill', $data->skill_array)) ? 'checked' : '' }}>
+
+                                        <label>Java</label>
+
+                                        <input type="checkbox" name="skill[]" value="python"
+                                            {{ in_array('python', old('skill', $data->skill_array)) ? 'checked' : '' }}>
+
+                                        <label>Python</label>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Apakah Setuju</label>
+                                    <div class="col-sm-10">
+                                        <input type="radio" name="setuju" value="yes"
+                                            {{ old('setuju', $data->setuju) == 'yes' ? 'checked' : '' }}>
+                                        <label>Yes</label>
+
+                                        <input type="radio" name="setuju" value="no"
+                                            {{ old('setuju', $data->setuju) == 'no' ? 'checked' : '' }}>
+                                        <label>No</label>
+                                    </div>
+                                </div>
+
                                 <div class="text-left">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>

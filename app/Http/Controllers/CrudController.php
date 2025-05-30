@@ -40,11 +40,10 @@ class CrudController extends Controller
         $save = new ProductModel;
 
         $save->name = trim($request->name);
-        $save->date = date('Y-m-d H:i:s');
-        // $save->skill = trim($request->skill);
-        $save->skill = $request->has('skill') ? implode(',', $request->skill) : null;
-
         $save->description = trim($request->description);
+        $save->date = $request->date;
+        $save->skill = $request->has('skill') ? implode(',', $request->skill) : null;
+        $save->setuju = trim($request->setuju);
 
         $save->save();
 
@@ -65,6 +64,7 @@ class CrudController extends Controller
     public function edit(string $id)
     {
         $data = ProductModel::findOrFail($id);
+        $data->skill_array = $data->skill ? explode(',', $data->skill) : [];
 
         return view('dashboard.crud.edit', compact('data'));
     }
@@ -79,6 +79,9 @@ class CrudController extends Controller
         $product->update([
             'name' => $request->name,
             'description' => $request->description,
+            'date' => $request->date,
+            'skill' => $request->has('skill') ? implode(',', $request->skill) : null,
+            'setuju' => $request->setuju,
         ]);
 
         return redirect()->route('crudindex')->with('success', 'Edit Data Successfully');

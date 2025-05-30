@@ -13,6 +13,9 @@ class ProductModel extends Model
 
     protected $fillable = [
         'name',
-        'description'
+        'description',
+        'date',
+        'skill',
+        'setuju'
     ];
 }

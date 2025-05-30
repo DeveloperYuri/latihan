@@ -34,6 +34,7 @@
                                         <th class="text-center">Name</th>
                                         <th class="text-center">Description</th>
                                         <th class="text-center">Skill</th>
+                                        <th class="text-center">Setuju</th>
                                         <th class="text-center">Date</th>
                                         <th class="text-center">Action</th>
                                     </tr>
@@ -48,6 +49,9 @@
                                                 @foreach (explode(',', $p->skill) as $skill)
                                                     <span class="badge bg-primary">{{ ucfirst($skill) }}</span>
                                                 @endforeach
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="badge bg-success">{{ $p->setuju }}</span>
                                             </td>
                                             {{-- <td class="text-center">
                                                 @php

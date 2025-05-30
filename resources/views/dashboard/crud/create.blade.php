@@ -46,19 +46,29 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Date</label>
                                     <div class="col-sm-10">
-                                        <input type="date" name="description" class="form-control">
+                                        <input type="date" name="date" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Skills</label>
                                     <div class="col-sm-10">
-                                        <input type="checkbox" name="skill[]" value="php"><label
-                                            for=""> PHP</label>
-                                        <input type="checkbox" name="skill[]" value="java"><label
-                                            for=""> Java</label>
-                                        <input type="checkbox" name="skill[]" value="python"><label
-                                            for=""> Python</label>
+                                        <input type="checkbox" name="skill[]" value="php"><label for="">
+                                            PHP</label>
+                                        <input type="checkbox" name="skill[]" value="java"><label for="">
+                                            Java</label>
+                                        <input type="checkbox" name="skill[]" value="python"><label for="">
+                                            Python</label>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Apakah Setuju</label>
+                                    <div class="col-sm-10">
+                                        <input type="radio" name="setuju" value="yes"><label
+                                            for="">Yes</label>
+                                        <input type="radio" name="setuju" value="no"><label
+                                            for="">No</label>
                                     </div>
                                 </div>
 
