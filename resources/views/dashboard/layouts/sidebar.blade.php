@@ -17,12 +17,12 @@
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="{{ route('crudindex')}}">
-              <i class="bi bi-circle"></i><span>Crud Basic</span>
+              <i class="bi bi-circle"></i><span>CRUD Basic</span>
             </a>
           </li>
           <li>
-            <a href="components-accordion.html">
-              <i class="bi bi-circle"></i><span>Accordion</span>
+            <a href="{{ route('crudimageindex')}}">
+              <i class="bi bi-circle"></i><span>CRUD Image</span>
             </a>
           </li>
           <li>
