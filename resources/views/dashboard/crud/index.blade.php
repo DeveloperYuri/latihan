@@ -16,7 +16,7 @@
 
         <a href="{{ route('createcrud') }}" class="btn btn-primary mb-3">New</a>
 
-        @if (session('success'))
+        {{-- @if (session('success'))
             <script>
                 Swal.fire({
                     icon: 'success',
@@ -26,6 +26,19 @@
                     showConfirmButton: false
                 });
             </script>
+        @endif --}}
+
+        @if (session('success') && !session()->has('alert_shown'))
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: '{{ session('success') }}',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+            </script>
+            <?php session()->flash('alert_shown', true); ?>
         @endif
 
         <section class="section">
@@ -73,6 +86,8 @@
                                             <td class="text-center">{{ date('d M Y', strtotime($p->date)) }}</td>
                                             <td class="text-center">
                                                 <form action="{{ route('deletecrud', $p->id) }}" method="POST">
+                                                    <a href="{{ route('crudshow', $p->id) }}"
+                                                        class="btn btn-sm btn-primary">Show</a>
                                                     <a href="{{ route('editcrudbasic', ['id' => $p->id]) }}"
                                                         class="btn btn-sm btn-warning">Edit</a>
                                                     @csrf

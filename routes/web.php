@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CrudController;
 use App\Http\Controllers\CrudImageController;
+use App\Http\Controllers\CrudSlugController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -20,6 +21,16 @@ Route::post('/postcrud', [CrudController::class, 'store'])->name('postcrud');
 Route::delete('/deletecrud/{id}', [CrudController::class, 'destroy'])->name('deletecrud');
 Route::get('/editcrudtest/{id}', [CrudController::class, 'edit'])->name('editcrudbasic');
 Route::put('/crud/update/{id}', [CrudController::class, 'update'])->name('crudupdate');
+Route::get('/crudshow/{id}', [CrudController::class, 'show'])->name('crudshow');
+
+// CRUD Slug
+Route::get('/crudslug', [CrudSlugController::class, 'index'])->name('crudslugindex');
+Route::get('/createcrudslug', [CrudSlugController::class, 'create'])->name('createcrudslug');
+Route::post('/createcrud/post', [CrudSlugController::class, 'store'])->name('createcrudslugpost');
+Route::get('/crudslugedit/{slug}', [CrudSlugController::class, 'edit'])->name('crudslugedit');
+Route::put('/crudslug/update/{slug}', [CrudSlugController::class, 'update'])->name('crudslugupdate');
+Route::delete('/crudslug/delete/{id}', [CrudSlugController::class, 'destroy'])->name('crudslugdelete');
+Route::get('/crudslugshow/{slug}', [CrudSlugController::class, 'show'])->name('crudslugshow');
 
 // CRUD Image 
 Route::get('/crudimage', [CrudImageController::class, 'index'])->name('crudimageindex');
@@ -28,7 +39,7 @@ Route::post('/crudimagepost', [CrudImageController::class, 'store'])->name('crud
 Route::delete('/crudimagedelete/{id}', [CrudImageController::class, 'destroy'])->name('crudimagedelete');
 Route::get('/crudimageedit/{id}', [CrudImageController::class, 'edit'])->name('crudimageedit');
 Route::put('/crudimage/update/{id}', [CrudImageController::class, 'update'])->name('crudimageupdate');
-
+Route::get('/crudimageshow/{id}', [CrudImageController::class, 'show'])->name('crudimageshow');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

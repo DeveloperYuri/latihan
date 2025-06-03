@@ -14,7 +14,7 @@
             </nav>
         </div><!-- End Page Title -->
 
-        <a href="{{ route('crudimagecreate') }}" class="btn btn-primary mb-3">New</a>
+        <a href="{{ route('createcrudslug') }}" class="btn btn-primary mb-3">New</a>
 
         @if (session('success'))
             <script>
@@ -34,39 +34,45 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">CRUD Image Table</h5>
+                            <h5 class="card-title">CRUD Slug Table</h5>
 
                             <!-- Default Table -->
-                            <table class="table table-hover align-middle">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         {{-- <th>No</th> --}}
                                         <th class="text-center">No</th>
-                                        <th class="text-center">Image</th>
                                         <th class="text-center">Name</th>
+                                        <th class="text-center">Slug</th>
                                         <th class="text-center">Description</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($productimage as $index => $p)
+                                    @foreach ($productslug as $index => $p)
                                         <tr>
                                             {{-- <th></th> --}}
-
-                                            <td class="text-center">{{ $productimage->firstItem() + $index }}</td>
-                                            <td class="text-center"><img
-                                                    src="{{ asset('/storage/productimage/' . $p->image) }}"
-                                                    alt="{{ $p->name }}" style="width: 60px"></td>
+                                            <td class="text-center">{{ $productslug->firstItem() + $index }}</td>
                                             <td class="text-center">{{ $p->name }}</td>
+                                            <td class="text-center">{{ $p->slug }}</td>
                                             <td class="text-center">{{ $p->description }}</td>
 
+                                            {{-- <td class="text-center">
+                                                @php
+                                                    $skills = explode(',', $p->skill);
+                                                    $skills = array_map('ucfirst', $skills); // Ubah huruf depan jadi kapital
+                                                    echo implode(', ', $skills);
+                                                @endphp
+                                            </td> --}}
                                             <td class="text-center">
-                                                <form action="{{ route('crudimagedelete', $p->id) }}" method="POST">
-                                                    <a href="{{ route('crudimageshow', $p->id)}}" class="btn btn-sm btn-primary">Show</a>
-                                                    <a href="{{ route('crudimageedit', $p->id )}}" class="btn btn-sm btn-warning">Edit</a>
+                                                <form action="{{ route('crudslugdelete', $p->id) }}" method="POST">
+                                                    <a href="{{ route('crudslugshow', $p->slug )}}" class="btn btn-sm btn-primary">Show</a>
+                                                    <a href="{{ route('crudslugedit', $p->slug) }}"
+                                                        class="btn btn-sm btn-warning">Edit</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete(this.form)">Hapus</button>
+                                                    <button type="button" class="btn btn-sm btn-danger"
+                                                        onclick="confirmDelete(this.form)">Hapus</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -95,6 +101,7 @@
                             }
                         </script>
                     @endpush
+
 
                 </div>
             </div>

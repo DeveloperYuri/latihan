@@ -78,4 +78,10 @@ class CrudImageController extends Controller
 
         return redirect()->route('crudimageindex')->with('success', 'Delete Data Succesfully');
     }
+
+    public function show(string $id){
+        $productimage = ProductImageModel::findorFail($id);
+
+        return view('dashboard.crudimage.show', compact('productimage'));
+    }
 }

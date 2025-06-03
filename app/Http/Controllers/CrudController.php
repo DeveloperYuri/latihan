@@ -55,7 +55,9 @@ class CrudController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $product = ProductModel::findorFail($id);
+
+        return view('dashboard.crud.show', compact('product'));
     }
 
     /**
@@ -96,4 +98,6 @@ class CrudController extends Controller
 
         return redirect()->route('crudindex')->with('success', 'Delete Data Successfully');
     }
+
+    
 }

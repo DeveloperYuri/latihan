@@ -26,8 +26,8 @@
             </a>
           </li>
           <li>
-            <a href="components-badges.html">
-              <i class="bi bi-circle"></i><span>Badges</span>
+            <a href="{{ route('crudslugindex')}}">
+              <i class="bi bi-circle"></i><span>CRUD Basic Slug</span>
             </a>
           </li>
           <li>
