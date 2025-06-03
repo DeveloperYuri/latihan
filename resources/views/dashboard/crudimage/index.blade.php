@@ -16,7 +16,17 @@
 
         <a href="{{ route('crudimagecreate') }}" class="btn btn-primary mb-3">New</a>
 
-        @include('_message')
+        @if (session('success'))
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: '{{ session('success') }}',
+                    timer: 2000, // 2000 ms = 2 detik
+                    showConfirmButton: false
+                });
+            </script>
+        @endif
 
         <section class="section">
             <div class="row">
@@ -51,12 +61,11 @@
                                             <td class="text-center">{{ $p->description }}</td>
 
                                             <td class="text-center">
-                                                <form onsubmit="return confirm('apakah anda yakin ingin delete data?')"
-                                                    action="{{ route('crudimagedelete', $p->id )}}" method="POST">
-                                                    <a href="" class="btn btn-sm btn-warning">Edit</a>
+                                                <form action="{{ route('crudimagedelete', $p->id) }}" method="POST">
+                                                    <a href="{{ route('crudimageedit', $p->id )}}" class="btn btn-sm btn-warning">Edit</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                                    <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete(this.form)">Hapus</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -66,6 +75,25 @@
                             <!-- End Default Table Example -->
                         </div>
                     </div>
+
+                    @push('scripts')
+                        <script>
+                            function confirmDelete(form) {
+                                Swal.fire({
+                                    title: 'Yakin ingin hapus?',
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#d33',
+                                    cancelButtonColor: '#3085d6',
+                                    confirmButtonText: 'Ya, hapus!'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        form.submit();
+                                    }
+                                });
+                            }
+                        </script>
+                    @endpush
 
                 </div>
             </div>

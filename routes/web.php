@@ -26,6 +26,8 @@ Route::get('/crudimage', [CrudImageController::class, 'index'])->name('crudimage
 Route::get('/createcrudimage', [CrudImageController::class, 'create'])->name('crudimagecreate');
 Route::post('/crudimagepost', [CrudImageController::class, 'store'])->name('crudimagepost');
 Route::delete('/crudimagedelete/{id}', [CrudImageController::class, 'destroy'])->name('crudimagedelete');
+Route::get('/crudimageedit/{id}', [CrudImageController::class, 'edit'])->name('crudimageedit');
+Route::put('/crudimage/update/{id}', [CrudImageController::class, 'update'])->name('crudimageupdate');
 
 
 Route::get('/dashboard', function () {

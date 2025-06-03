@@ -94,6 +94,6 @@ class CrudController extends Controller
     {
         $id->delete();
 
-        return redirect()->route('crudindex')->with('error', 'Delete Data Successfully');
+        return redirect()->route('crudindex')->with('success', 'Delete Data Successfully');
     }
 }
