@@ -31,8 +31,8 @@
             </a>
           </li>
           <li>
-            <a href="components-breadcrumbs.html">
-              <i class="bi bi-circle"></i><span>Breadcrumbs</span>
+            <a href="{{ route('productcomponent.index')}}">
+              <i class="bi bi-circle"></i><span>CRUD Component</span>
             </a>
           </li>
           <li>

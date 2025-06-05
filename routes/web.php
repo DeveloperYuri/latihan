@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\CrudComponentController;
 use App\Http\Controllers\CrudController;
 use App\Http\Controllers\CrudImageController;
 use App\Http\Controllers\CrudSlugController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductComponentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +24,16 @@ Route::delete('/deletecrud/{id}', [CrudController::class, 'destroy'])->name('del
 Route::get('/editcrudtest/{id}', [CrudController::class, 'edit'])->name('editcrudbasic');
 Route::put('/crud/update/{id}', [CrudController::class, 'update'])->name('crudupdate');
 Route::get('/crudshow/{id}', [CrudController::class, 'show'])->name('crudshow');
+
+//CRUD Component
+Route::resource('productcomponent', ProductComponentController::class);
+
+// Route::get('/crudcomponent', [CrudComponentController::class, 'index'])->name('crudcomponentindex');
+// Route::get('/createcrudcomponent', [CrudComponentController::class, 'create'])->name('createcrudcomponent');
+// Route::post('/crudcomponentpost', [CrudComponentController::class, 'store'])->name('crudcomponentpost');
+// Route::get('/crudcomponentedit/{slug}', [CrudComponentController::class, 'edit'])->name('crudcomponentedit');
+// Route::put('/crudcomponentupdate/{slug}', [CrudComponentController::class, 'update'])->name('crudcomponentupdate');
+// Route::delete('/crudcomponentdelete/{slug}', [CrudComponentController::class, 'destroy'])->name('crudcomponentdelete');
 
 // CRUD Slug
 Route::get('/crudslug', [CrudSlugController::class, 'index'])->name('crudslugindex');
