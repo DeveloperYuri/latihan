@@ -36,8 +36,8 @@
             </a>
           </li>
           <li>
-            <a href="components-buttons.html">
-              <i class="bi bi-circle"></i><span>Buttons</span>
+            <a href="{{ route('productimageslug.index')}}">
+              <i class="bi bi-circle"></i><span>CRUD image Slug</span>
             </a>
           </li>
           <li>
